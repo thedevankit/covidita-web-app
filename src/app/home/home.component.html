@@ -1,0 +1,143 @@
+<div class="home-grid-layout">
+    <mat-card *ngIf="showButton"
+        style="margin:10px; text-align: center; background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);">
+        <h2 mat-dialog-title>Covidita: Covid Tracker</h2>
+
+        <mat-dialog-content class="mat-typography">
+            <p>An app's that will allow you track Covid Cases in Maharashtra.</p>
+            <h3>Why to install the app?</h3>
+            <ul class="headList">
+                <li>Live Data Updates</li>
+                <li>One click Installtion</li>
+                <li>Availabe for Android/Ios/Desktop</li>
+                <li>Work Offilne</li>
+            </ul>
+        </mat-dialog-content>
+        <mat-dialog-actions>
+            <button style="margin:0 20px; padding:0 20px" mat-stroked-button (click)="cancelScreen()">Cancel</button>
+            <button style="margin:0 20px;padding:0 20px" (click)="addToHomeScreen()" mat-stroked-button>
+                Install
+                <mat-icon style="font-size: 20px;">arrow_circle_down</mat-icon>
+            </button>
+        </mat-dialog-actions>
+    </mat-card>
+
+    <mat-card class="card border-radius" style="margin:10px;">
+        <mat-form-field style="margin-top: 16px;">
+            <mat-label style="font-size: 16px;">Select your state</mat-label>
+            <mat-select (selectionChange)="onStateChange($event)" name="state">
+                <mat-option *ngFor="let state of stateWithCode; let i=index" [value]="state.code">
+                    {{state.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-card-title style="margin-top:20px ;word-wrap: break-word;line-height: 1.4;"> {{stateName }} <br
+                class="mobile" />Covid19 Status Report </mat-card-title>
+        <mat-card-subtitle>Updated: <span> {{alldata?.meta?.last_updated | date}}</span></mat-card-subtitle>
+        <!-- <mat-card-subtitle style="word-wrap: break-word;">Source:	<span> {{alldata?.meta?.tested?.source}}</span></mat-card-subtitle> -->
+        <!-- <mat-card-subtitle>Source:{{alldata.MH.meta.tested.source}}</mat-card-subtitle> -->
+        <div class="product-grid-container" style="margin: 60px 0px;">
+            <mat-card class="card border-radius" style="padding-bottom: 15px;color:red; background:#ffe0e6">
+                <div class="vertical-height"></div>
+                <div>
+                    <mat-icon style="font-size: 40px;">favorite</mat-icon>
+                    <h4>Total number of active cases</h4>
+                    <div class="vertical-height"></div>
+                    <span style="padding: 5px 10px; font-size: 30px;">
+                        {{alldata?.total?.confirmed}} <span *ngIf="alldata?.delta?.confirmed"
+                            style="font-size: 16px !important;"> + {{alldata?.delta?.confirmed}} Today</span>
+                    </span>
+                </div>
+            </mat-card>
+
+            <mat-card class="card border-radius" style="padding-bottom: 15px;background: #dfeeff; color: #007bff;">
+                <div class="vertical-height"></div>
+                <div>
+                    <mat-icon style="font-size: 40px;">local_pharmacy</mat-icon>
+                    <h4>Total number of test conducted</h4>
+                    <div class="vertical-height"></div>
+                    <span style="padding: 5px 10px; font-size: 30px;">
+                        {{alldata?.total?.tested}}<span *ngIf="alldata?.delta?.tested"
+                            style="font-size: 16px !important;"> + {{alldata?.delta?.tested}} Today</span>
+                    </span>
+                </div>
+            </mat-card>
+
+            <mat-card class="card border-radius" style="padding-bottom: 15px;background:#e4f4e8; color: seagreen;">
+                <div class="vertical-height"></div>
+                <div>
+                    <mat-icon style="font-size: 40px;">how_to_reg</mat-icon>
+                    <h4>Total number of recovered</h4>
+                    <div class="vertical-height"></div>
+                    <span style="padding: 5px 10px; font-size: 30px;">
+                        {{alldata?.total?.recovered}}<span *ngIf="alldata?.delta?.recovered"
+                            style="font-size: 16px !important;"> + {{alldata?.delta?.recovered}} Today</span>
+                    </span>
+                </div>
+            </mat-card>
+
+            <mat-card class="card border-radius" color="accent"
+                style="padding-bottom: 15px; background: #FFFFCC; color: #f0ad4e	;">
+                <div class="vertical-height"></div>
+                <div>
+                    <mat-icon style="font-size: 40px;">local_hotel</mat-icon>
+                    <h4>Total number of deaths</h4>
+                    <div class="vertical-height"></div>
+                    <span style="padding: 5px 10px; font-size: 30px;">
+                        {{alldata?.total?.deceased}}<span *ngIf="alldata?.delta?.deceased"
+                            style="font-size: 16px !important;"> + {{alldata?.delta?.deceased}} Today</span>
+                    </span>
+                </div>
+            </mat-card>
+        </div>
+    </mat-card>
+
+    <div class="product-grid-container" style="margin: 60px 0px;">
+        <mat-card class="card border-radius" style="padding-bottom: 15px;"
+            *ngFor="let item of alldata?.districts | keyvalue">
+            <div class="vertical-height"></div>
+            <div>
+                <h2> {{item.key}}</h2>
+                <div class="vertical-height"></div>
+                <div *ngFor="let itemInObject of item.value | keyvalue">
+                    <!-- {{itemInObject.key}} -->
+                    <p style="font-size: 16px; font-weight: 500; color: green;border-radius: 20px; background:#e4f4e8;"
+                        *ngIf="itemInObject.key == 'delta'">
+                        Today:
+                    </p>
+                    <p style="font-size:16px; font-weight: 500; color: red; border-radius: 20px; background:#ffe0e6;"
+                        *ngIf="itemInObject.key == 'total'">
+                        Total:
+                    </p>
+                    <span style="padding: 5px 10px; font-size: 20px !important;"
+                        *ngFor="let itemvalues of itemInObject.value | keyvalue">
+                        <span>
+                            <!-- {{itemvalues.key}} -->
+                            <span *ngIf="itemvalues.key == 'tested'; else elseBlock" style="display: none;"></span>
+                            <ng-template #elseBlock>
+                                <button *ngIf="itemvalues.key == 'deceased'" mat-button color="primary"> Death:
+                                    {{itemvalues.value}}</button>
+                                <button *ngIf="itemvalues.key == 'recovered'" mat-button color="accent">Recovered:
+                                    {{itemvalues.value}}</button>
+                                <button *ngIf="itemvalues.key == 'confirmed'" mat-button color="warn"> Confirmed:
+                                    {{itemvalues.value}}</button>
+
+                                <span *ngIf="itemvalues.key == 'population'" style="display: none;"> </span>
+                                <!-- <span *ngIf="itemvalues.key == 'confirmed'" style="font-size: 16px; color:red">
+                                        Confirmed : {{itemvalues.value}}
+                                </span> -->
+                                <!-- <span *ngIf="itemvalues.key == 'recovered'" style="font-size: 16px;   color:green">
+                                        Recovered : {{itemvalues.value}}
+                                </span>
+                                <span *ngIf="itemvalues.key == 'deceased'" style=" font-size: 16px;  color:Blue">
+                                    Death {{itemvalues.value}}
+                                </span> -->
+                            </ng-template>
+
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

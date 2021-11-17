@@ -1,0 +1,27 @@
+.header {
+  grid-area: header;
+}
+.menu {
+  grid-area: menu;
+}
+.slider{
+    grid-area: slider;
+}
+.body {
+  grid-area: main;
+}
+.footer {
+  grid-area: footer;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-areas:
+    "header header header header header header"
+    "main main main main main main"
+    "footer footer footer footer footer footer";
+  gap: 1rem;
+  min-height: 100vh;
+  grid-template-rows: 70px 1fr 200px;
+  grid-template-columns: minmax(100px, 1fr) 4fr;
+}

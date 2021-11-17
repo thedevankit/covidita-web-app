@@ -1,0 +1,115 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+@import "~@angular/material/theming";
+@import "../src/assets/theme.scss";
+
+@include mat-core();
+$custom-success-color: rgb(156, 209, 139);
+
+$red-primary: mat-palette($mat-pink, 800);
+$red-accent: mat-palette($mat-green, 800);
+$red-warn: mat-palette($mat-red, 700);
+
+.red-dark-theme {
+  $theme: mat-light-theme($red-primary, $red-accent, $red-warn);
+  @include angular-material-theme($theme);
+  @include component-theme($theme, $custom-success-color);
+}
+
+.red-light-theme {
+  $theme: mat-dark-theme($red-primary, $red-accent, $red-warn);
+  @include angular-material-theme($theme);
+  @include component-theme($theme, $custom-success-color);
+}
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  letter-spacing: 0.2px;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 500;
+  overflow: overlay;
+}
+
+//This is because to enable mat-dialog
+.cdk-global-scrollblock {
+  position: static !important;
+  width: initial !important;
+  overflow-y: inherit !important;
+}
+.cdk-global-overlay-wrapper {
+  display: flex;
+  position: absolute;
+  z-index: 1000;
+  overflow: auto;
+  pointer-events: auto;
+}
+
+.no-v-scroll {
+  height: 100%;
+  overflow-y: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(90, 90, 90);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.dialog-container {
+  min-height: 80px;
+  min-width: 500px;
+
+  .model-header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .model-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+    // max-height: 300px;
+    overflow: auto;
+  }
+  .model-footer {
+    height: 30px;
+    padding: 20px 20px;
+  }
+}
+
+.object-fit_fill {
+  object-fit: fill;
+}
+.object-fit_contain {
+  object-fit: contain;
+}
+.object-fit_cover {
+  object-fit: cover;
+}
+.object-fit_none {
+  object-fit: none;
+}
+.object-fit_scale-down {
+  object-fit: scale-down;
+}

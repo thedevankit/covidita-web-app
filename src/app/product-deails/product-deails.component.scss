@@ -1,0 +1,16 @@
+.product-details-container {
+   padding: 0 10px;
+}
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(420px, auto);
+  gap: 2rem;
+}
+
+.variant-grid-box{
+    min-height: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, auto));
+    gap: 3rem;
+}

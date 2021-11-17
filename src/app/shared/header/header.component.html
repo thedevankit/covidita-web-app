@@ -1,0 +1,48 @@
+<mat-toolbar class="header-container card-background box-shadow flex-with-space-between">
+    <div class="flex-item-center">
+        <img src="../../../assets/img/logo.png" height="40px" width="40px">
+        <!-- <mat-icon class="menu-icon" style="margin-right: 10px;" (click)="toggleMenuClick()">menu</mat-icon> -->
+        <h2 class="bold"> CovidiTa</h2>
+    </div>
+    <div class="flex-item-center menu">
+        <button mat-button [routerLink]="['/home']">
+            <mat-icon>home</mat-icon><span class=" hide uppercase">Home</span>
+        </button>
+        <div class="flex-item-center">
+            <span class="small-gap"></span>
+            <button mat-button (click)="openLoginSideNav()">
+                <mat-icon>person</mat-icon><span class="hide uppercase">Developer</span>
+            </button>
+        </div>
+        <span class="small-gap"></span>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>format_color_fill</mat-icon>
+            <span class="hide uppercase">Mode</span>
+        </button>
+    </div>
+    <!-- <div class="hideforweb flex-item-center">
+        <button mat-button [routerLink]="['/home']">
+            <mat-icon>home</mat-icon><span class=" hide uppercase">Home</span>
+        </button>
+        <span class="small-gap"></span>
+        <button mat-button (click)="openLoginSideNav()">
+            <mat-icon>person</mat-icon><span class="hide uppercase">Developer</span>
+        </button>
+        <span class="small-gap"></span>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>format_color_fill</mat-icon>
+            <span class="hide uppercase">Mode</span>
+        </button>
+        <button mat-icon-button [routerLink]="['/search']" routerLinkActive="active">
+            <mat-icon>search</mat-icon>
+        </button>
+    </div> -->
+</mat-toolbar>
+
+
+<mat-menu #menu="matMenu" class="small-padding foreground">
+    <mat-radio-group aria-label="Select an option" class="flex-column" [(ngModel)]="selectedTheme">
+        <mat-radio-button color="primary" *ngFor="let mode of themesModes" [value]="mode" style="margin: 10px 5px;"
+            (change)="changeThemeEvent($event)"><span><strong>{{mode}}</strong></span></mat-radio-button>
+    </mat-radio-group>
+</mat-menu>

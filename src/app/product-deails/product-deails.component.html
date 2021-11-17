@@ -1,0 +1,77 @@
+<div class="product-details-container">
+    <div class="details-grid" style="padding: 30px 40px;">
+        <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-fruit-desserts-1558040489.jpg?crop=0.670xw:1.00xh;0.231xw,0&resize=640:*"
+            height="100%" width="100%" class="border-radius" alt="image">
+        <div class="flex-column">
+            <h1 style="font-size: 36px;">Hot Paper salad</h1>
+            <div class="vertical-height"></div>
+            <span class="opacity">Hot paper salad with chilli !!</span>
+            <div class="small-vertical-height"></div>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book</p>
+
+            <div class="vertical-height"></div>
+            <div class="flex-item-center">
+                <div class="flex">
+                    <div class="flex-with-space-between border border-radius box-shadow"
+                        style="padding: 5px 0px; width: 100px;">
+                        <span class="flex1 flex-middle">
+                            <mat-icon>remove</mat-icon>
+                        </span>
+                        <span class="flex1 flex-middle" style="font-size: 14px;">3</span>
+                        <span class="flex1 flex-middle">
+                            <mat-icon>add</mat-icon>
+                        </span>
+                    </div>
+                </div>
+                <div class="large-gap"></div>
+                <span class="border border-radius flex-item-center" style="padding: 8px 15px; font-size: 14px;">
+                    <span>Price:</span>
+                    <div class="small-gap"></div> <strong>$250</strong>
+                </span>
+            </div>
+            <div class="vertical-height"></div>
+            <div class="small-vertical-height"></div>
+            <button mat-raised-button class="uppercase" style="width: 280px;" color="accent">
+                Add to cart
+            </button>
+            <div class="vertical-height"></div>
+            <div class="small-vertical-height"></div>
+            <div class="variant-grid-box box-shadow border-radius card-background big-padding">
+                <div class="flex pointer" *ngFor="let variant of variantsGroup" [matMenuTriggerFor]="variants">
+                    <mat-icon color="accent">local_pizza</mat-icon>
+                    <div class="micro-gap"></div>
+                    <div class="flex-column">
+                        <label>250g</label>
+                        <span>Mozzarella</span>
+                    </div>
+                </div>
+            </div>
+            <mat-menu #variants="matMenu" class="small-padding foreground">
+                <mat-radio-group aria-label="Select an option" class="flex-column" [(ngModel)]="selectedVariant">
+                    <mat-radio-button color="accent" *ngFor="let variant of productVariants" [value]="variant"
+                        style="margin: 10px 5px;"><span><strong>{{variant.name}}</strong></span>
+                    </mat-radio-button>
+                </mat-radio-group>
+            </mat-menu>
+        </div>
+    </div>
+    <div class="card-background box-shadow border-radius" style="min-height: 200px;  padding: 30px 40px;">
+        <div class="flex-item-center">
+            <label>Category</label>&nbsp;>&nbsp;<label>pizza</label>&nbsp;>&nbsp;<label>chilli pizza</label>
+        </div>
+        <div class="vertical-height"></div>
+        <mat-tab-group animationDuration="2000ms" color="accent" appearance="fill">
+            <mat-tab label="Test good with">
+                <app-addons></app-addons>
+            </mat-tab>
+            <mat-tab label="Feedback">
+                <app-feedback></app-feedback>
+            </mat-tab>
+            <mat-tab label="Detailed info">
+                <app-info></app-info>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

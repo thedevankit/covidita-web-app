@@ -1,0 +1,46 @@
+.home-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.product-grid-container {
+  padding: 0px 20px;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(265px, auto));
+  row-gap: 3rem;
+}
+
+.card {
+  padding: 0;
+  height: 100%;
+  transition: 0.5s;
+  text-align: center;
+}
+
+.headList{
+  text-align:left;
+  margin:0 35%;
+}
+.mobile {
+  display: none;
+}
+@media only screen and (max-width: 800px) {
+  .product-grid-container {
+    padding: 0px 20px;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(265px, auto));
+    row-gap: 3rem;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .headList{
+    text-align:left;
+    margin:0 5%;
+  }
+
+}

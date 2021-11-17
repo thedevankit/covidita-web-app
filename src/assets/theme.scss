@@ -1,0 +1,355 @@
+@import "../assets/custom_grid.scss";
+
+@mixin component-theme($theme, $custom-success-color) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  body {
+    background: mat-color($background, background);
+  }
+
+  button {
+    border-radius: 20px;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 500;
+    margin: 0;
+  }
+  .warn {
+    color: mat-color($warn, 500);
+  }
+  .primary {
+    color: mat-color($primary, 500);
+  }
+  .primary-background {
+    background-color: mat-color($primary, 500);
+  }
+
+  .accent {
+    color: mat-color($accent);
+  }
+  a {
+    color: mat-color($primary, 500);
+  }
+  h2 {
+    font-size: 20px;
+    margin: 0;
+  }
+  ol,
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  li {
+    display: list-item;
+    outline: none;
+  }
+  li:active {
+    outline: none;
+  }
+  li {
+    font-weight: 500 !important;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  // li:hover{
+  //     color: mat-color($primary, 500);
+  // }
+  .hover-effect:hover {
+    color: mat-color($primary, 500);
+  }
+  .hover-underline:hover {
+    text-decoration: underline;
+  }
+
+  mat-icon {
+    cursor: pointer;
+    //color: mat-color($primary, 500);
+  }
+
+  .active {
+    outline: none;
+    background: mat-color($primary, 50);
+    font-weight: 800;
+    color: mat-color($primary, 500);
+    mat-icon {
+      color: mat-color($primary, 800) !important;
+    }
+  }
+  span {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  label {
+    font-size: 11px;
+    font-weight: 400;
+    opacity: 0.7;
+  }
+  .no-padding {
+    padding: 0;
+  }
+  .no-margin {
+    margin: 0;
+  }
+  .opacity {
+    opacity: 0.5;
+  }
+  .padding-horizontaly {
+    padding: 0px 10px;
+  }
+  .padding-vertically {
+    padding: 10px 0px;
+  }
+  .margin-vertically {
+    padding: 40px 0px;
+  }
+  .small-padding {
+    padding: 5px;
+  }
+  .line {
+    height: 1px;
+    border: 0.5px solid lightgray;
+  }
+  .border {
+    border: 1px solid lightgray;
+  }
+  .primary-border {
+    border: 1px solid mat-color($primary, 800);
+  }
+
+  .border-radius {
+    border-radius: 10px;
+  }
+
+  .padding {
+    padding: 10px;
+  }
+  .big-padding {
+    padding: 20px;
+  }
+  .micro-gap {
+    width: 5px;
+  }
+  .very-small-gap {
+    width: 10px;
+  }
+  .small-gap {
+    width: 20px;
+  }
+  .medium-gap {
+    width: 40px;
+  }
+  .large-gap {
+    width: 60px;
+  }
+  .very-large-gap {
+    width: 80px;
+  }
+
+  .success {
+    color: $custom-success-color;
+  }
+  .full-height {
+    height: 100%;
+  }
+  .full-width {
+    width: 100%;
+  }
+  .flex-item-center {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .flex-only {
+    display: flex;
+    align-items: baseline;
+  }
+  .reverse-flex {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+  .flex-column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .flex-with-space-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .flex-space-around {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .flex-end {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .flex-middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .flex-middle-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .flex1 {
+    flex: 1;
+  }
+  .flex2 {
+    flex: 2;
+  }
+  .flex3 {
+    flex: 3;
+  }
+  .flex4 {
+    flex: 4;
+  }
+  .flex1_5 {
+    flex: 1.5;
+  }
+  .flex2_5 {
+    flex: 2.5;
+  }
+  .box-shadow {
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+  }
+  .background {
+    background: mat-color($background, background);
+  }
+  .foreground {
+    color: mat-color($foreground, text);
+  }
+
+  .card-background {
+    background: mat-color($background, card);
+  }
+  .success-background {
+    background: $custom-success-color;
+  }
+  .success-outline {
+    border: 1px solid $custom-success-color !important;
+    color: $custom-success-color !important;
+  }
+  .success-outline:hover {
+    background: $custom-success-color;
+    color: white !important;
+  }
+  .primary-outline {
+    border: 1px solid mat-color($primary) !important;
+    color: mat-color($primary) !important;
+  }
+  .primary-outline:hover {
+    background: mat-color($primary);
+    color: white !important;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+
+  .anchorActive {
+    border-bottom: 2px solid black !important;
+  }
+
+  .mat-dialog-container {
+    padding: 0 !important;
+  }
+  .mat-drawer-content {
+    overflow: hidden;
+  }
+
+  .vertical-line {
+    border-left: 1px solid lightgray;
+  }
+
+  .bottom-border {
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+  }
+
+  .top-border {
+    padding-top: 10px;
+    border-top: 1px solid lightgray;
+  }
+  .small-vertical-height {
+    height: 10px;
+  }
+  .vertical-height {
+    height: 20px;
+  }
+  .big-vertical-height {
+    height: 40px;
+  }
+  .bold {
+    font-weight: 600;
+  }
+  .div-scroll {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: auto;
+  }
+  .selected-card {
+    border: 1px solid green !important;
+  }
+
+  .circle-box {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+  }
+  .mat-dialog-container {
+    overflow: hidden !important;
+  }
+
+  .disabled-img {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+  }
+
+  .responsive {
+    width: 100%;
+    height: auto;
+  }
+  .scale-effect {
+    transition: 0.8s;
+  }
+  .scale-effect:hover {
+    transform: scale(1.02);
+  }
+  .uppercase {
+    text-transform: uppercase;
+  }
+  .mat-chip-list-wrapper{
+    justify-content: center;
+  }
+}

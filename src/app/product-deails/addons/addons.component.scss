@@ -1,0 +1,25 @@
+.product-grid-container {
+    padding: 0px 20px;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(265px, auto));
+    row-gap: 8rem;
+  }
+  
+.card {
+    position: relative;
+    height: 100%;
+    transition: 0.5s;
+    img {
+      position: absolute;
+      top: -40px;
+      left: 35%;
+    }
+    .product-add-button {
+      position: absolute;
+      bottom: -15px;
+      left: 45%;
+    }
+    text-align: center;
+  }
+  

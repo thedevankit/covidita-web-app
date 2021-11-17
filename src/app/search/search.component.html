@@ -1,0 +1,48 @@
+<div class="search-container">
+    <div class="flex-middle-column full-width">
+        <div class="search-box">
+            <input type="text" class="search-input-box full-width box-shadow"
+                placeholder="Search for your favourite food ..." [(ngModel)]="searchModel" />
+            <div class="search-button flex-item-center">
+                <button mat-button *ngIf="searchModel" mat-icon-button aria-label="Clear" (click)="searchModel=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <div class="micro-gap"></div>
+                <button mat-button mat-icon-button aria-label="Clear">
+                    <mat-icon>search</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="big-vertical-height"></div>
+        <div class="big-vertical-height"></div>
+        <ng-container *ngIf="!searchModel">
+            <mat-chip-list aria-label="Fish selection" style="max-width: 800px;" class="flex-middle">
+                <mat-chip *ngFor="let suggest of suggestList" (click)="suggestClick(suggest)" class="pointer suggestChips" >{{suggest}}</mat-chip>
+            </mat-chip-list>
+        </ng-container>
+    </div>
+    <ng-container *ngIf="searchModel">
+        <div style="padding: 0px 20px;">
+            <h1>Search: "<i class="primary">{{searchModel}}</i>"</h1>
+        </div>
+        <div class="product-grid-container" style="margin: 60px 0px;">
+            <mat-card class="card border-radius" style="padding-bottom: 10px;" *ngFor="let product of products"
+                [routerLink]="['/product-details/101']">
+                <img class="border-radius"
+                    src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-fruit-desserts-1558040489.jpg?crop=0.670xw:1.00xh;0.231xw,0&resize=640:*"
+                    width="100%" height="200px" alt="image">
+                <div class="vertical-height"></div>
+                <div>
+                    <h4>Hot Paper Salad</h4>
+                    <label>Hot paper salad with chilli</label>
+                    <div class="vertical-height"></div>
+                    <span class="border-radius box-shadow" style="padding: 5px 10px; font-size: 16px;">
+                        $250
+                    </span>
+                </div>
+            </mat-card>
+        </div>
+    </ng-container>
+
+
+</div>

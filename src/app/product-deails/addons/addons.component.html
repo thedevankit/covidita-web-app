@@ -1,0 +1,18 @@
+<div class="product-grid-container" style="margin: 80px 0px;">
+    <mat-card class="card background" *ngFor="let product of products" >
+        <img class="circle-box box-shadow"
+            src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-fruit-desserts-1558040489.jpg?crop=0.670xw:1.00xh;0.231xw,0&resize=640:*"
+            width="100%" height="100%" alt="image">
+        <div style="margin-top: 60px;">
+            <h4>Hot Paper Salad</h4>
+            <label>Hot paper salad with chilli</label>
+            <div class="vertical-height"></div>
+            <span class="border border-radius box-shadow" style="padding: 5px 10px;">
+                $250
+            </span>
+        </div>
+        <button mat-mini-fab color="accent" class="product-add-button">
+            <mat-icon>add</mat-icon>
+        </button>
+    </mat-card>
+</div>
